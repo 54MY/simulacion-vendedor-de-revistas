@@ -1,0 +1,102 @@
+
+header {
+    background-image: url('../assets/LogoUMSS.png');
+    /* Reemplaza con la ruta de tu imagen */
+    background-size: 40%;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 250px;
+    /* Ajusta la altura del encabezado según tus necesidades */
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    /* Color del texto para asegurar la legibilidad en el fondo */
+    margin: 0;
+}
+
+body {
+    background: radial-gradient(circle at 50% 50%, #C20000, #003770), repeating-radial-gradient(circle, transparent 0, transparent 5px, #333 5px, #333 10px);
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    /* Ajusta el margen a 0 para ocupar todo el espacio */
+    font-size: 2em;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    height: 100vh;
+    /* Ocupa toda la altura de la ventana del navegador */
+}
+
+h1 {
+    color: var(--solid);
+    font-size: 2.5rem;
+    margin-top: 0rem;
+}
+
+.box {
+    font-family: 'Raleway', sans-serif;
+    text-align: center;
+    /* Ajusta el margen a 0 para ocupar todo el espacio */
+    font-size: 2em;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    /* Ocupa todo el ancho disponible */
+    height: 98vh;
+    /* Ocupa toda la altura de la ventana del navegador */
+}
+
+.btn {
+    position: relative;
+    margin: 0 auto;
+    background-color: #003770;
+    width: 40%;
+    /* Cambia el valor para ajustar el ancho del botón */
+    color: var(--primary);
+    border: .15em solid var(--primary);
+    border-radius: 5em;
+    text-transform: uppercase;
+    text-align: center;
+    font-size: 1em;
+    line-height: 2em;
+    cursor: pointer;
+    letter-spacing: 0.1em;
+    /* Ajusta el espaciado entre las letras */
+}
+
+.btn:hover {
+    background-color: #005ec2;
+}
+
+@keyframes atom {
+    0% {
+        transform: translateX(0) rotate(0);
+    }
+
+    30% {
+        transform: translateX(var(--tr-X)) rotate(0);
+    }
+
+    50% {
+        transform: translateX(var(--tr-X)) rotate(180deg);
+    }
+
+    80% {
+        transform: translateX(0) rotate(180deg);
+    }
+
+    100% {
+        transform: translateX(0) rotate(360deg);
+    }
+}

@@ -1,46 +1,27 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simulacion de Vendedor de Revistas</title>
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
-    <link rel="stylesheet" href="css/estilos.css">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="css/index.css">
 </head>
+
 <body>
-    <h1>Simulacion de Vendedor de Revistas</h1>
-    <form id="simulation-form">
-        <div class="form-group">
-            <label for="numDias">Numero de Dias:</label>
-            <input class="form-control" type="number" id="numDias" name="numDias" value="10">
-        </div>
-    </br>
-        <div class="form-group">
-            <label for="horasTrabajo">Horas de Trabajo:</label>
-            <input class="form-control" type="number" id="horasTrabajo" name="horasTrabajo" value="8">
-        </div>
-    </br>
-        <div class="form-group">
-            <label for="precioRevista">Precio de venta:</label>
-            <input class="form-control" type="number" id="precioRevista" name="precioRevista" step="0.01" value="2.5">
-        </div>
-    </br>
-        <div class="form-group">
-            <label for="probabilidades">Probabilidades Acumuladas (separadas por comas):</label>
-            <input type="text" id="probabilidades" name="probabilidades" value="0.1,0.3,0.6,0.9,1.0">
-        </div>
-    </br>
-        <button type="button" id="simulate-button">Simular</button>
-    </form>
+    <header></header>
+    <h1>Ingenieria de Sistemas</h1>
+    <h2>Bienvenido</h2>
 
-    <div id="chart-container">
-        <!-- Aquí se mostrarán los resultados de las simulaciones -->
-    </div>
+    <p>Sistema de simulacion para la compra y venta de revistas</p>
 
-    <div id="results">
-        <!-- Aquí se mostrarán los resultados de las simulaciones -->
+    <div class="container">
+        <button class="btn" onclick="redirigir()">Empezar</button>
     </div>
-    <script src="js/simulacion.js"></script>
+    <script>
+        function redirigir() {
+            window.location.href = 'simulacion.html';
+        }
+    </script>
 </body>
 </html>

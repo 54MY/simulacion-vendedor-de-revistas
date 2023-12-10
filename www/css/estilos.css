@@ -1,20 +1,12 @@
+
 body {
     background: linear-gradient(to right, #E30613, #003770);
-    margin: 50;
     padding: 0;
-    font-family: Arial, sans-serif;
-    color: #ffffff; /* Cambia el color del texto según sea necesario */
 }
+
 body label {
     font-family: Arial, sans-serif;
     color: #000000; /* Cambia el color del texto según sea necesario */
-}
-
-.container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    box-sizing: border-box;
 }
 
 form {
@@ -35,4 +27,15 @@ button {
 
 button:hover {
     background-color: #45a049; /* Verde más oscuro al pasar el ratón sobre el botón */
+}
+
+.results {
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.8); /* Fondo semi-transparente blanco para el formulario */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2); /* Sombra ligera alrededor del formulario */
+    color: #000000; /* Cambia el color del texto según sea necesario */
 }
