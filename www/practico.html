@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulacion de Vendedor de Revistas</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.0/chart.min.js"></script>
+    <script src="https://rawgit.com/eKoopmans/html2pdf/master/dist/html2pdf.bundle.js"></script>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css">
+    <link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css"
+        rel="stylesheet" />
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.css">
+
+</head>
+
+<body>
+    <div class="m-0 vh-100 justify-content-center">
+        <div class="col-auto p-5 text-center">
+            <h1 class="text-white font-weight-bold">Simular nueva venta</h1>
+            <br>
+            <form id="simulation-form">
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="numDias">Numero de días de trabajo (días):</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="number" id="numDias" name="numDias" value="10" min="1"
+                            max="365">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="horasTrabajo">Horas de trabajo diaria (Hrs.):</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="number" id="horasTrabajo" name="horasTrabajo" value="8"
+                            min="1" max="24">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="precioRevista">Precio de venta por unidad (Bs.):</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="number" id="precioRevista" name="precioRevista" step="0.01"
+                            value="2.5" min="0.01" max="30">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-4 col-form-label" for="probabilidades">Probabilidades acumuladas:</label>
+                    <div class="col-sm-8">
+                        <input class="form-control" type="text" id="probabilidades" name="probabilidades"
+                            value="0.1,0.3,0.2,0.1,0.2">
+                    </div>
+                </div>
+                <button type="button" class="btn btn-primary" id="simulate-button" data-toggle="modal"
+                    data-target="#exampleModal">Simular</button>
+                <button type="button" class="btn btn-secondary" onclick="atras()">Atras</button>
+            </form>
+            </br>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"><button type="button" class="btn btn-primary"
+                            onclick="exportarAPDF()">Exportar a
+                            PDF</button></h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div id="resultado">
+                        <h5 class="font-weight-bold">Resultado de la simulación</h5>
+                        <hr>
+                        <div id="chart-container"></div>
+                        <hr>
+                        <div class="results" id="results"></div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <p class="font-italic">La simulación de sistemas es una herramienta valiosa para comprender,
+                        analizar y mejorar el
+                        rendimiento de sistemas complejos en diversos campos, al permitir la exploración y
+                        experimentación en entornos virtuales controlados.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <button type="button" class="btn btn-info floating-btn btn-lg" data-toggle="modal"
+        data-target="#ayuda">Ayuda</button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="ayuda" tabindex="-1" role="dialog" aria-labelledby="ayudaTitle" aria-hidden="true">
+        <div class="modal-dialog modal-xl" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2 class="modal-title" id="ayudaTitle">Documento de Ayuda - Simulación del Vendedor de Revistas
+                    </h2>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <h2>Tabla de Contenidos</h2>
+                    <ol>
+                        <li><a href="#introducción">Introducción</a></li>
+                        <li><a href="#conceptos-clave">Conceptos Clave</a>
+                            <ol>
+                                <li><a href="#método-montecarlo">Método Montecarlo</a></li>
+                                <li><a href="#probabilidades-acumuladas">Probabilidades Acumuladas</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#instrucciones-de-uso">Instrucciones de Uso</a>
+                            <ol>
+                                <li><a href="#número-de-días">Número de Días</a></li>
+                                <li><a href="#horas-de-trabajo">Horas de Trabajo</a></li>
+                                <li><a href="#probabilidades-acumuladas-1">Probabilidades Acumuladas</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#resultados-de-la-simulación">Resultados de la Simulación</a>
+                            <ol>
+                                <li><a href="#ganancia-diaria">Ganancia Diaria</a></li>
+                                <li><a href="#gráfico-de-barras">Gráfico de Barras</a></li>
+                            </ol>
+                        </li>
+                        <li><a href="#beneficios-y-aplicaciones">Beneficios y Aplicaciones</a></li>
+                        <li><a href="#consejos-y-consideraciones">Consejos y Consideraciones</a></li>
+                        <li><a href="#aclaraciones-adicionales">Aclaraciones Adicionales</a></li>
+                    </ol>
+
+                    <h2 id="introducción">1. Introducción</h2>
+                    <p>Bienvenido a la simulación del vendedor de revistas. Este documento de ayuda tiene como objetivo
+                        proporcionar una comprensión detallada de los conceptos clave, las instrucciones de uso y los
+                        beneficios asociados con esta aplicación.</p>
+
+                    <h2 id="conceptos-clave">2. Conceptos Clave</h2>
+                    <h3 id="método-montecarlo">2.1 Método Montecarlo</h3>
+                    <p>El Método Montecarlo es una técnica estadística que utiliza números aleatorios para modelar
+                        fenómenos complejos. En este contexto, se aplica para simular las ventas diarias de un vendedor
+                        de revistas, permitiendo la exploración de diferentes escenarios y la toma de decisiones basada
+                        en resultados probabilísticos.</p>
+
+                    <h3 id="probabilidades-acumuladas">2.2 Probabilidades Acumuladas</h3>
+                    <p>Las probabilidades acumuladas son valores acumulativos que representan la probabilidad de que
+                        ocurra un evento. En la simulación del vendedor de revistas, estas probabilidades se utilizan
+                        para modelar la cantidad de revistas vendidas por hora, permitiendo una mayor flexibilidad y
+                        realismo en la simulación.</p>
+
+                    <h2 id="instrucciones-de-uso">3. Instrucciones de Uso</h2>
+                    <h3 id="número-de-días">3.1 Número de Días</h3>
+                    <p>Ingrese el número de días que desea simular en el campo correspondiente. Este parámetro
+                        determinará la duración total de la simulación y afectará la variabilidad de los resultados.</p>
+
+
+                    <h3 id="horas-de-trabajo">3.2 Horas de Trabajo</h3>
+                    <p>Especifique el número de horas de trabajo diarias del vendedor de revistas. Este valor influirá
+                        directamente en la ganancia total diaria y permitirá explorar cómo la duración de la jornada
+                        laboral afecta los resultados.
+                    </p>
+
+                    <h3 id="probabilidades-acumuladas-1">3.3 Probabilidades Acumuladas</h3>
+                    <p>Ingrese las probabilidades acumuladas separadas por comas. Estas probabilidades modelarán la
+                        distribución de ventas por hora. Asegúrese de que la suma de las probabilidades sea igual a 1.0.
+                    </p>
+
+                    <h2 id="resultados-de-la-simulación">4. Resultados de la Simulación</h2>
+                    <h3 id="ganancia-diaria">4.1 Ganancia Diaria</h3>
+                    <p>La ganancia diaria representa el total acumulado de ingresos del vendedor de revistas para cada
+                        día simulado.
+                    </p>
+                    <h3 id="gráfico-de-barras">4.2 Gráfico de Barras</h3>
+                    <p>Se generará un gráfico de barras que visualiza la ganancia diaria, ofreciendo una representación
+                        visual de los resultados y facilitando la comparación entre diferentes días.
+                    </p>
+
+                    <h2 id="beneficios-y-aplicaciones">5. Beneficios y Aplicaciones</h2>
+                    <p>La simulación del vendedor de revistas proporciona beneficios tales como la toma de decisiones
+                        informada, la visualización clara de resultados y la capacidad de explorar diversos escenarios.
+                        Esta herramienta es aplicable en la planificación estratégica y la comprensión de variables que
+                        afectan las ganancias.
+                    </p>
+
+                    <h2 id="consejos-y-consideraciones">6. Consejos y Consideraciones</h2>
+                    <ul>
+                        <li>Ajuste los parámetros para explorar diferentes escenarios.</li>
+                        <li>Analice los resultados y considere cómo los cambios en las variables afectan las ganancias.
+                        </li>
+                        <li>Realice múltiples simulaciones para obtener una visión más completa.</li>
+                    </ul>
+                    <h2 id="aclaraciones-adicionales">7. Aclaraciones Adicionales</h2>
+                    <ul>
+                        <li>Asegúrese de tener una conexión a internet para cargar la biblioteca Chart.js desde el CDN.
+                        </li>
+                        <li>Los resultados de cada simulación se presentarán en la página, y puede realizar múltiples
+                            simulaciones sin cerrar la aplicación.</li>
+                    </ul>
+                    <p>Este documento proporciona una guía completa para comprender y utilizar la simulación del
+                        vendedor de revistas. ¡Esperamos que disfrute explorando y aprendiendo con esta herramienta!
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/practico.js"></script>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function exportarAPDF() {
+            var element = document.getElementById('resultado');
+            html2pdf().set({
+                margin: 1,
+                filename: 'docuemtno.pdf',
+                image: {
+                    type: 'jpeg',
+                    quality: 0.98
+                },
+                html2canvas: {
+                    scale: 3,
+                    letterRendering: true,
+                },
+                jsPDF: {
+                    unit: "in",
+                    format: "a3",
+                    orientation: 'portrait'
+                }
+            })
+                .from(element)
+                .save()
+                .catch(err => console.log(err))
+                .finally()
+                .then(() => {
+                    console.log("Guardado!!!")
+                });
+        }
+    </script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.3/dist/bootstrap-table.min.js"></script>
+    <script
+        src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
+
+    <script>
+        function recargarPagina() {
+            location.reload();
+        }
+    </script>
+    <script>
+        function atras() {
+            window.location.href = 'simulacion.html';
+        }
+    </script>
+
+</body>
+
+</html>
