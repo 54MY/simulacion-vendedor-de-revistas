@@ -27,53 +27,74 @@
             <h1 class="text-white font-weight-bold">Simulación de Vendedor de Revistas</h1>
             <br>
             <form id="simulation-form">
-                <p class="font-italic">Un vendedor de revistas compra mensualmente una revista el día primero de cada
+                <p class="font-italic">Un vendedor de revistas compra mensualmente <input type="number" id="qcompras"
+                        name="qcompras" value="9" min="1" max="90" required> revistas el día primero de cada
                     mes. El
-                    costo de cada ejemplar es de Bs. 1.50. La demanda de esta revista en los primeros 10 dias
+                    costo de cada ejemplar es de Bs. <input type="number" id="qcompradies" name="qcompradies"
+                        step="0.01" value="1.50" min="0.01" max="30" required>. La demanda de esta revista en los
+                    primeros 10 dias
                     del mes sigue la siguiente distribución de probabilidad:</p>
+                <br>
                 <table class="table table-striped table-bordered" id="tabla1">
                     <thead>
                         <tr>
                             <th scope="row">Demanda</th>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">5</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">5</a>
+                                <!-- <input type="number" step="0.01" value="5" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">6</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">6</a>
+                                <!-- <input type="number" step="0.01" value="6" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">7</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">7</a>
+                                <!-- <input type="number" step="0.01" value="7" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">8</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">8</a>
+                                <!-- <input type="number" step="0.01" value="8" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">9</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">9</a>
+                                <!-- <input type="number" step="0.01" value="9" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">10</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">10</a>
+                                <!-- <input type="number" step="0.01" value="10" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">11</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">11</a>
+                                <!-- <input type="number" step="0.01" value="11" min="0.01" max="30" required> --></td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <th scope="row">probabilidad</th>
+                            <td><a href="#"
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.05</a>
+                                <!-- <input type="number" step="0.01" value="0.05" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.05</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.05</a>
+                                <!-- <input type="number" step="0.01" value="0.05" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.05</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.10</a>
+                                <!-- <input type="number" step="0.01" value="0.10" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.10</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.15</a>
+                                <!-- <input type="number" step="0.01" value="0.15" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.15</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.25</a>
+                                <!-- <input type="number" step="0.01" value="0.25" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.25</a></td>
+                                class="editable editable-click editable-empty macAddr" data-abc="true">0.25</a>
+                                <!-- <input type="number" step="0.01" value="0.25" min="0.01" max="30" required> --></td>
                             <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.25</a></td>
-                            <td><a href="#" data-type="number" step="0.01" data-pk="1"
-                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.15</a></td>
+                                    class="editable editable-click editable-empty macAddr" data-abc="true">0.15</a>
+                                <!-- <input type="number" step="0.01" value="0.15" min="0.01" max="30" required> --></td>
                         </tr>
                     </tbody>
                 </table>
                 <p class="font-italic">Al final del décimo día, el vendedor puede regresar cualquier cantidad al
                     proveedor, quien
-                    se las pagará a Bs. 0.90 el ejemplar, o comprar más a Bs. 1.20 el ejemplar. La demanda en
+                    se las pagará a Bs. <input type="number" id="qsalvamentodies" name="qsalvamentodies" step="0.01"
+                        value="0.90" min="0.01" max="30" required> el ejemplar, o comprar más a Bs. <input type="number"
+                        id="qcompraveinte" name="qcompraveinte" step="0.01" value="1.20" min="0.01" max="30" required>
+                    el ejemplar. La demanda en
                     los siguientes 20 días está dada por la siguiente distribución de probabilidad:</p>
 
                 <table class="table table-striped table-bordered" id="tabla2">
@@ -110,9 +131,13 @@
                 </table>
                 <p class="font-italic">Al final del mes, el vendedor puede regresar al proveedor las revistas que le
                     sobren, las
-                    cuales se le pagarán a Bs. 0.60 el ejemplar. Finalmente, se asume que después de un mes
+                    cuales se le pagarán a Bs. <input type="number" id="qsalvamentoveinte" name="qsalvamentoveinte"
+                        step="0.01" value="0.60" min="0.60" max="30" required> el ejemplar. Finalmente, se asume
+                    que después de un mes
                     ya no existe demanda por parte del público, puesto que para ese entonces ya habrá
-                    aparecido el nuevo número de la revista. Si el precio al público es de Bs. 2.‐ por ejemplar,
+                    aparecido el nuevo número de la revista. Si el precio al público es de Bs. <input type="number"
+                        id="qventa" name="qventa" step="0.01" value="2" min="0.01" max="30" required>.
+                    por ejemplar,
                     determine la política óptima de compra.</p>
 
                 <hr>

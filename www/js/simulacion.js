@@ -7,6 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
     const barrasContainer = document.getElementById('barras-container');
 
     acumuladaButton.addEventListener('click', function () {
+
+        const qcompras = parseInt(document.getElementById('qcompras').value);
+        const qcompradies = parseInt(document.getElementById('qcompradies').value);
+        const qcompraveinte = parseInt(document.getElementById('qcompraveinte').value);
+        const qsalvamentodies = parseInt(document.getElementById('qsalvamentodies').value);
+        const qsalvamentoveinte = parseInt(document.getElementById('qsalvamentoveinte').value);
+        const qventa = parseInt(document.getElementById('qventa').value);
+
         acumuladaButton.classList.add('invisible');
         reiniciar.classList.remove('invisible');
 
@@ -57,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Buscar en el mapa el rango al que pertenece el número aleatorio
             for (const { limiteInferior, limiteSuperior, demanda } of limitesInfoMap) {
                 if (numeroAleatorio >= limiteInferior && numeroAleatorio < limiteSuperior) {
-                    console.log("demanda: " + demanda);
                     return { demanda, numeroAleatorio };
                 }
             }
@@ -83,12 +90,12 @@ document.addEventListener('DOMContentLoaded', function () {
         for (let i = 0; i < 10; i++) {
             const { demanda, numeroAleatorio } = obtenerDemanda1();
             const nuevaFila = document.createElement('tr');
-            const minimo = Math.min(9, demanda);
-            const noVendidos = 9 - minimo;
-            const utilidad = (1.5 * 9) + (2 * minimo) - (noVendidos * 0.9);
-            nuevaFila.innerHTML = `<td>${i + 1}</td><td>${numeroAleatorio}</td><td>${demanda}</td><td>9</td><td>${minimo}</td><td>${noVendidos}</td><td>${utilidad.toFixed(2)}</td>`;
+            const minimo = Math.min(qcompras, demanda);
+            const noVendidos = qcompras - minimo;
+            const utilidad = (qcompradies * qcompras) + (qventa * minimo) - (noVendidos * qsalvamentodies);
+            nuevaFila.innerHTML = `<td>${i + 1}</td><td>${numeroAleatorio}</td><td>${demanda}</td><td>${qcompras}</td><td>${minimo}</td><td>${noVendidos}</td><td>${utilidad.toFixed(2)}</td>`;
             tbodyLSimulacion1.appendChild(nuevaFila);
-            console.log(`Corrida ${i + 1}: Demanda ${demanda}`);
+            //console.log(`Corrida ${i + 1}: Demanda ${demanda}`);
             gananciasPorDia.push(utilidad.toFixed(2));
         }
         tablaSimulacion1.appendChild(tbodyLSimulacion1);
@@ -138,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function () {
             // Buscar en el mapa el rango al que pertenece el número aleatorio
             for (const { limiteInferior, limiteSuperior, demanda } of limitesInfoMap) {
                 if (numeroAleatorio >= limiteInferior && numeroAleatorio < limiteSuperior) {
-                    console.log("demanda: " + demanda);
                     return { demanda, numeroAleatorio };
                 }
             }
@@ -147,16 +153,16 @@ document.addEventListener('DOMContentLoaded', function () {
             return "No se encontró demanda para el número aleatorio";
         }
 
-        // Realizar diez corridas y mostrar la demanda asociada a cada número aleatorio
+        // Realizar vei corridas y mostrar la demanda asociada a cada número aleatorio
         for (let i = 0; i < 20; i++) {
             const { demanda, numeroAleatorio } = obtenerDemanda2();
             const nuevaFila = document.createElement('tr');
-            const minimo = Math.min(9, demanda);
-            const noVendidos = 9 - minimo;
-            const utilidad = (1.2 * 9) + (2 * minimo) - (noVendidos * 0.6);
-            nuevaFila.innerHTML = `<td>${i + 11}</td><td>${numeroAleatorio}</td><td>${demanda}</td><td>9</td><td>${minimo}</td><td>${noVendidos}</td><td>${utilidad.toFixed(2)}</td>`;
+            const minimo = Math.min(qcompras, demanda);
+            const noVendidos = qcompras - minimo;
+            const utilidad = (qcompraveinte * qcompras) + (qventa * minimo) - (noVendidos * qsalvamentoveinte);
+            nuevaFila.innerHTML = `<td>${i + 11}</td><td>${numeroAleatorio}</td><td>${demanda}</td><td>${qcompras}</td><td>${minimo}</td><td>${noVendidos}</td><td>${utilidad.toFixed(2)}</td>`;
             tbodyLSimulacion1.appendChild(nuevaFila);
-            console.log(`Corrida ${i + 11}: Demanda ${demanda}`);
+            //console.log(`Corrida ${i + 11}: Demanda ${demanda}`);
             gananciasPorDia.push(utilidad.toFixed(2));
         }
 

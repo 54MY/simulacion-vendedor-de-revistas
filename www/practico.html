@@ -31,28 +31,28 @@
                     <label class="col-sm-4 col-form-label" for="numDias">Numero de días de trabajo (días):</label>
                     <div class="col-sm-8">
                         <input class="form-control" type="number" id="numDias" name="numDias" value="10" min="1"
-                            max="365">
+                            max="365" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label" for="horasTrabajo">Horas de trabajo diaria (Hrs.):</label>
                     <div class="col-sm-8">
                         <input class="form-control" type="number" id="horasTrabajo" name="horasTrabajo" value="8"
-                            min="1" max="24">
+                            min="1" max="24" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-4 col-form-label" for="precioRevista">Precio de venta por unidad (Bs.):</label>
                     <div class="col-sm-8">
                         <input class="form-control" type="number" id="precioRevista" name="precioRevista" step="0.01"
-                            value="2.5" min="0.01" max="30">
+                            value="2.5" min="0.01" max="30" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label class="col-sm-4 col-form-label" for="probabilidades">Probabilidades acumuladas:</label>
+                    <label class="col-sm-4 col-form-label" for="probabilidades">Probabilidades acumuladas (%):</label>
                     <div class="col-sm-8">
                         <input class="form-control" type="text" id="probabilidades" name="probabilidades"
-                            value="0.1,0.3,0.2,0.1,0.2">
+                            value="0.1,0.3,0.2,0.1,0.2" required>
                     </div>
                 </div>
                 <button type="button" class="btn btn-primary" id="simulate-button" data-toggle="modal"
@@ -60,36 +60,15 @@
                 <button type="button" class="btn btn-secondary" onclick="atras()">Atras</button>
             </form>
             </br>
-        </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-xl" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel"><button type="button" class="btn btn-primary"
-                            onclick="exportarAPDF()">Exportar a
-                            PDF</button></h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div id="resultado">
-                        <h5 class="font-weight-bold">Resultado de la simulación</h5>
-                        <hr>
-                        <div id="chart-container"></div>
-                        <hr>
-                        <div class="results" id="results"></div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <p class="font-italic">La simulación de sistemas es una herramienta valiosa para comprender,
-                        analizar y mejorar el
-                        rendimiento de sistemas complejos en diversos campos, al permitir la exploración y
-                        experimentación en entornos virtuales controlados.</p>
+            <div class="results invisible" id="resfin">
+                <button type="button" class="btn btn-primary float-right" onclick="exportarAPDF()">Exportar a
+                    PDF</button>
+                <div id="resultado">
+                    <h3 class="font-weight-bold">Resultado de la simulación</h3>
+                    <hr>
+                    <div class="results" id="chart-container"></div>
+                    <hr>
+                    <div class="results" id="results"></div>
                 </div>
             </div>
         </div>
@@ -234,7 +213,7 @@
             var element = document.getElementById('resultado');
             html2pdf().set({
                 margin: 1,
-                filename: 'docuemtno.pdf',
+                filename: 'documento.pdf',
                 image: {
                     type: 'jpeg',
                     quality: 0.98

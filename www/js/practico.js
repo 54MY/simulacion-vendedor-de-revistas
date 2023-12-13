@@ -3,10 +3,13 @@ document.addEventListener('DOMContentLoaded', function () {
     const simulateButton = document.getElementById('simulate-button');
     const resultsContainer = document.getElementById('results');
     const chartContainer = document.getElementById('chart-container');
+    const resfin = document.getElementById('resfin');
+    const precioRevista = parseInt(document.getElementById('precioRevista').value);
 
     /** ####################### **/
 
     simulateButton.addEventListener('click', function () {
+        resfin.classList.remove('invisible');
         const numDias = parseInt(document.getElementById('numDias').value);
         const horasTrabajo = parseInt(document.getElementById('horasTrabajo').value);
         const probabilidadesInput = document.getElementById('probabilidades').value;
@@ -95,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 }
             }
 
-            const gananciaHora = ventasPorHora * 2.5; // Suponiendo que cada revista se vende a $2.5
+            const gananciaHora = ventasPorHora * precioRevista; // Suponiendo que cada revista se vende a bs. 2.5
             gananciaDia += gananciaHora;
         }
 
