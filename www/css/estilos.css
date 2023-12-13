@@ -32,6 +32,34 @@ form {
     /* Cambia el color del texto según sea necesario */
 }
 
+.optimo {
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(129, 255, 156, 0.8);
+    /* Fondo semi-transparente blanco para el formulario */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Sombra ligera alrededor del formulario */
+    color: #000000;
+    /* Cambia el color del texto según sea necesario */
+}
+
+.bajo {
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    background-color: rgba(255, 146, 146, 0.8);
+    /* Fondo semi-transparente blanco para el formulario */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    /* Sombra ligera alrededor del formulario */
+    color: #000000;
+    /* Cambia el color del texto según sea necesario */
+}
+
 .floating-btn {
     position: fixed;
     bottom: 16px;

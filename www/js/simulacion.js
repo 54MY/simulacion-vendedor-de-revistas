@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const resultsAcumulada2 = document.getElementById('acumulada-2');
     const tablaSimulacion = document.getElementById('simulacion');
     const barrasContainer = document.getElementById('barras-container');
+    const conclusion = document.getElementById('conclusion');
 
     acumuladaButton.addEventListener('click', function () {
 
@@ -168,6 +169,17 @@ document.addEventListener('DOMContentLoaded', function () {
 
         tablaSimulacion1.appendChild(tbodyLSimulacion1);
         tablaSimulacion.appendChild(tablaSimulacion1);
+
+
+        const resconclusion = document.createElement('div');
+        if (qcompras > 55) {
+            resconclusion.innerHTML = '<p>"La simulación del sistema para determinar la cantidad óptima de revistas ha arrojado resultados claros. Identificamos la cantidad ideal que maximiza la utilidad, permitiéndonos gestionar nuestro inventario de manera eficiente. Esta valiosa herramienta nos proporciona una base sólida para decisiones informadas, mejorando la rentabilidad y la planificación futura de nuestro negocio editorial."</p> <h4><strong> Comprar:  ' + qcompras + ' revistas (uds.)</strong></h4>';
+            conclusion.classList.add('optimo');
+        } else {
+            resconclusion.innerHTML = '<p>"La cantidad de revistas a comprar no genera una buena utilidad, puede volver a generar una nueva simulación."</p> <strong> Debe comprar mayor cantidad de revistas que ' + qcompras + ' (uds.) par tener una mejor utilidad</strong>';
+            conclusion.classList.add('bajo');
+        }
+        conclusion.appendChild(resconclusion);
 
         // Crear y mostrar el gráfico de barras
         createBarSimulacion(gananciasPorDia);
